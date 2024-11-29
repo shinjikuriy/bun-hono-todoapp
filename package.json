@@ -1,7 +1,7 @@
 {
   "name": "bun-hono-todoapp",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "(trap 'kill 0' SIGINT EXIT; bun build --watch src/client.tsx --outdir dist/static/ & bun run --hot src/index.tsx)"
   },
   "dependencies": {
     "hono": "^4.6.5"
