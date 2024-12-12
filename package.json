@@ -1,12 +1,15 @@
 {
   "name": "bun-hono-todoapp",
+  "type": "module",
   "scripts": {
-    "dev": "(trap 'kill 0' SIGINT EXIT; bun build --watch src/client.tsx --outdir dist/static/ & bun run --hot src/index.tsx)"
+    "dev": "bunx --bun vite"
   },
   "dependencies": {
     "hono": "^4.6.5"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@hono/vite-dev-server": "^0.17.0",
+    "@types/bun": "latest",
+    "vite": "^6.0.3"
   }
 }
