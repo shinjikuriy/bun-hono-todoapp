@@ -1,8 +1,10 @@
 import {} from 'hono/jsx'
 
-interface TodoProps {
+export interface TodoProps {
+  id: string
   name: string
   completed: boolean
+  key: string
 }
 
 export default function Todo(props: TodoProps) {
@@ -10,7 +12,7 @@ export default function Todo(props: TodoProps) {
     <li className="todo stack-small">
       <div className="c-cb">
         <input id="todo-0" type="checkbox" checked={props.completed} />
-        <label className="todo-label" htmlFor="todo-0">
+        <label className="todo-label" htmlFor={props.id}>
           {props.name}
         </label>
       </div>

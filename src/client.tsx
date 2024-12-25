@@ -1,8 +1,18 @@
 import { render } from 'hono/jsx/dom'
 import './client.css'
-import Todo from './components/Todo'
+import Todo, { TodoProps } from './components/Todo'
 
-function App() {
+const DATA: TodoProps[] = [
+  { id: 'todo-0', name: 'Eat', completed: true, key: 'todo-0' },
+  { id: 'todo-1', name: 'Sleep', completed: false, key: 'todo-1' },
+  { id: 'todo-2', name: 'Repeat', completed: false, key: 'todo-2' },
+]
+
+function App(props: { tasks: TodoProps[] }) {
+  const taskList = props.tasks?.map(task => (
+    <Todo id={task.id}  key={task.key} name={task.name} completed={task.completed} />
+  ))
+
   return (
     <div>
       <h1>Todo App</h1>
@@ -48,12 +58,10 @@ function App() {
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
-        <Todo name="Eat" completed={true} />
-        <Todo name="Sleep" completed={false} />
-        <Todo name="Repeat" completed={false} />
+        {taskList}
       </ul>
     </div>
   )
 }
 
-render(<App />, document.body)
+render(<App tasks={DATA}/>, document.body)
